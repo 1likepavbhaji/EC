@@ -15,13 +15,13 @@ void dfs(int node) {
     visited[node] = true;
     cout << labels[node] << " "; 
 
-    if (node == goal) {
-        found = true;
+    if (node==goal) {
+        found=true;
         return;
     }
 
     for (int i = 0; i < n; i++) {
-        if (graph[node][i] == 1 && !visited[i]) {
+        if (graph[node][i]== 1 && !visited[i]) {
             dfs(i);
             if (found) return;
         }
@@ -29,14 +29,13 @@ void dfs(int node) {
 }
 
 int main() {
-    n = 7; 
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++)
-            graph[i][j] = 0;
+    n=7; 
+    for (int i=0; i < n; i++)
+        for (int j= 0; j < n; j++)
+            graph[i][j] =0;
             
 graph[0][2] = 1; 
 graph[2][0] = 1; 
-
 graph[0][1] = 1;
 graph[1][0] = 1;
 
@@ -56,8 +55,8 @@ graph[4][6] = 1;
 graph[6][4] = 1;
 
     
-    for (int i = 0; i < n; i++)
-        visited[i] = false;
+    for (int i = 0; i<n; i++)
+        visited[i] =false;
 
     cout << "DFS Path starting from " << labels[0] << ": ";
     dfs(0); 
