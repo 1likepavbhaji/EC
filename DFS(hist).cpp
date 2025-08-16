@@ -2,20 +2,20 @@
 #include <vector>
 using namespace std;
 
-const int MAX = 100;
-int goal = 6;
-bool found = false;
+const int MAX=100;
+int goal=6;
+bool found=false;
 
 int graph[MAX][MAX];
 bool visited[MAX];
 int n;
 
 char labels[MAX] = {'S', 'A', 'B', 'C', 'D', 'E', 'G'};
-vector<int> history; // to store the path
+vector<int> history; 
 
 void dfs(int node) {
     visited[node] = true;
-    history.push_back(node); // add current node to history
+    history.push_back(node); 
 
     if (node==goal) {
         found=true;
@@ -26,21 +26,20 @@ void dfs(int node) {
         return;
     }
 
-    for (int i = 0; i < n; i++) {
-        if (graph[node][i] == 1 && !visited[i]) {
+    for (int i =0; i<n; i++) {
+        if (graph[node][i] ==1 && !visited[i]) {
             dfs(i);
-            if (found) return; // stop if goal found
+            if (found) return; 
         }
     }
 
-    history.pop_back(); // backtrack (remove from history)
+    history.pop_back(); 
 }
-
 int main() {
     n = 7;
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++)
-            graph[i][j] = 0;
+    for (int i=0; i<n; i++)
+        for (int j=0; j<n; j++)
+            graph[i][j]=0;
 
 graph[0][2] = 1; 
 graph[2][0] = 1; 
@@ -63,8 +62,8 @@ graph[4][1] = 1;
 graph[4][6] = 1; 
 graph[6][4] = 1;
 
-    for (int i = 0; i < n; i++)
-        visited[i] = false;
+    for (int i =0; i<n; i++)
+        visited[i] =false;
 
     dfs(0);
 
